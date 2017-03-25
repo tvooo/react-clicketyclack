@@ -6,9 +6,7 @@
 
 ## Preview
 
-<iframe src="//giphy.com/embed/XIqCQx02E1U9W?hideSocial=true" width="480" height="268.8" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/XIqCQx02E1U9W">via GIPHY</a></p>
-
-(Screenshot)
+![Kermit typing it out for you](https://github.com/tvooo/react-clicketyclack/raw/master/docs/kermit.gif)
 
 (Demo)
 
@@ -34,10 +32,41 @@ const App = () => (
 
 ## Props
 
-* lines _arrayOf(string)_ - an array of lines to be typed out, one after the other
-* onComplete _func_ - called once all lines have been typed
-* erase _bool_ - erase line once typed, and continue with next
-* repeat _bool_ - repeat after all line have been typed
+| Property            | PropType               | Required | Default Value |
+| ------------------- | ---------------------- | -------- | ------------- |
+| lines               | arrayOf(string)        | true     | -             |
+| className           | string                 | false    | null          |
+| erase               | bool                   | false    | true          |
+| eraseSpeed          | number                 | false    | 70            |
+| onComplete          | func                   | false    | null          |
+| pause               | number                 | false    | 600           |
+| repeat              | bool                   | false    | true          |
+| speed               | number                 | false    | 100           |
+
+### `lines`
+
+An array of lines to be typed out, one after the other.
+
+### `eraseSpeed`
+
+In milliseconds, how fast each character will be erased.
+
+### `onComplete`
+
+Callback function to be called once all lines have been typed. Will be called multiple times when `repeat` is set
+to `true`.
+
+### `pause`
+
+In milliseconds, the pause before starting to type or starting to erase.
+
+### `repeat`
+
+If set to true, it will start over once all lines have been typed.
+
+### `pause`
+
+In milliseconds, how fast each character will be typed.
 
 ## License
 
