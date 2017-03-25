@@ -1,0 +1,33 @@
+$tvo-color-grey-50: #f8f8f8;
+$tvo-color-grey-100: #dddddd;
+
+html {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+}
+
+.Markdown {
+  blockquote {
+    margin-left: 0;
+    padding-left: 1rem;
+    border-left: .2rem solid $tvo-color-grey-100;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  ul,
+  ol,
+  blockquote,
+  pre {
+    margin-top: 1rem;
+  }
+}
+
+svg * {
+  -webkit-transition: fill 0.2s ease-in-out;
+  -moz-transition: fill 0.2s ease-in-out;
+  -ms-transition: fill 0.2s ease-in-out;
+  transition: fill 0.2s ease-in-out;
+}
