@@ -1,8 +1,8 @@
 # react-clicketyclack
 
-> A React component that types out text, one character at a time
+> A React component that types out lines of text, one character at a time
 
-[![Build Status](https://travis-ci.org/tvooo/react-writetyper.svg?branch=master)](https://travis-ci.org/tvooo/react-writetyper)
+[![Build Status](https://travis-ci.org/tvooo/react-clicketyclack.svg?branch=master)](https://travis-ci.org/tvooo/react-clicketyclack)
 
 ## Preview
 
@@ -67,6 +67,15 @@ If set to true, it will start over once all lines have been typed.
 ### `pause`
 
 In milliseconds, how fast each character will be typed.
+
+## Other projects
+
+react-clicketyclack was created to emulate the behaviour of [jquery.typer.js](https://github.com/layervault/jquery.typer.js).
+
+There are other React components that do similar things:
+
+- [react-typist](https://github.com/jstejada/react-typist)
+- [react-typerwriter](https://github.com/ianbjorndilling/react-typewriter)
 
 ## License
 
