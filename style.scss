@@ -1,0 +1,26 @@
+@import "~mdscss/src/tokens";
+
+@keyframes blink {
+  0% { opacity: 1; }
+  20% { opacity: 1; }
+  40% { opacity: 0; }
+  50% { opacity: 0; }
+  60% { opacity: 0; }
+  80% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+html {
+  font-family: $md-font-family-sans-serif;
+  font-size: 16px;
+}
+
+.ClicketyClack {
+  font-family: $md-font-family-monospace;
+
+  &__cursor {
+    font-weight: 700;
+    color: #268EC6;
+    animation: blink .6s infinite linear;
+  }
+}
