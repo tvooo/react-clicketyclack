@@ -1,33 +1,26 @@
-$tvo-color-grey-50: #f8f8f8;
-$tvo-color-grey-100: #dddddd;
+@import "~mdscss/src/tokens";
+
+@keyframes blink {
+  0% { opacity: 1; }
+  20% { opacity: 1; }
+  40% { opacity: 0; }
+  50% { opacity: 0; }
+  60% { opacity: 0; }
+  80% { opacity: 1; }
+  100% { opacity: 1; }
+}
 
 html {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-family: $md-font-family-sans-serif;
   font-size: 16px;
 }
 
-.Markdown {
-  blockquote {
-    margin-left: 0;
-    padding-left: 1rem;
-    border-left: .2rem solid $tvo-color-grey-100;
-  }
+.ClicketyClack {
+  font-family: $md-font-family-monospace;
 
-  h1,
-  h2,
-  h3,
-  h4,
-  ul,
-  ol,
-  blockquote,
-  pre {
-    margin-top: 1rem;
+  &__cursor {
+    font-weight: 700;
+    color: #268EC6;
+    animation: blink .6s infinite linear;
   }
-}
-
-svg * {
-  -webkit-transition: fill 0.2s ease-in-out;
-  -moz-transition: fill 0.2s ease-in-out;
-  -ms-transition: fill 0.2s ease-in-out;
-  transition: fill 0.2s ease-in-out;
 }

@@ -18,13 +18,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Typist = function (_Component) {
-  _inherits(Typist, _Component);
+var ClicketyClack = function (_Component) {
+  _inherits(ClicketyClack, _Component);
 
-  function Typist() {
-    _classCallCheck(this, Typist);
+  function ClicketyClack() {
+    _classCallCheck(this, ClicketyClack);
 
-    var _this = _possibleConstructorReturn(this, (Typist.__proto__ || Object.getPrototypeOf(Typist)).call(this));
+    var _this = _possibleConstructorReturn(this, (ClicketyClack.__proto__ || Object.getPrototypeOf(ClicketyClack)).call(this));
 
     _this.state = {
       lineIndex: 0,
@@ -36,7 +36,7 @@ var Typist = function (_Component) {
     return _this;
   }
 
-  _createClass(Typist, [{
+  _createClass(ClicketyClack, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.type();
@@ -71,15 +71,16 @@ var Typist = function (_Component) {
 
       if (this.state.characters - 1 === 0) {
         if (isLastLine) {
-          return this.setState({
+          this.setState({
             characters: 0,
             lineIndex: 0
           });
+        } else {
+          this.setState({
+            characters: 0,
+            lineIndex: this.state.lineIndex + 1
+          });
         }
-        this.setState({
-          characters: 0,
-          lineIndex: this.state.lineIndex + 1
-        });
         setTimeout(this.type, pause);
       } else {
         this.setState({ characters: this.state.characters - 1 });
@@ -103,20 +104,20 @@ var Typist = function (_Component) {
     }
   }]);
 
-  return Typist;
+  return ClicketyClack;
 }(_react.Component);
 
-Typist.propTypes = {
+ClicketyClack.propTypes = {
   lines: _react.PropTypes.arrayOf(_react.PropTypes.string).isRequired,
   speed: _react.PropTypes.number,
   eraseSpeed: _react.PropTypes.number,
   pause: _react.PropTypes.number
 };
 
-Typist.defaultProps = {
+ClicketyClack.defaultProps = {
   speed: 100,
   eraseSpeed: 70,
   pause: 600
 };
 
-exports.default = Typist;
+exports.default = ClicketyClack;

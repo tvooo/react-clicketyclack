@@ -1,6 +1,6 @@
 {
   "name": "react-clicketyclack",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Let me type it out for you",
   "main": "dist/ClicketyClack.js",
   "directories": {
@@ -11,18 +11,19 @@
     "build": "NODE_ENV=production webpack -p",
     "start": "webpack-dev-server",
     "eslint": "eslint --ext .js,.jsx .",
-    "test": "npm run eslint"
+    "test": "npm run eslint",
+    "gh-pages": "gh-pages -d docs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tvooo/vector-clicketyclack.git"
+    "url": "git+https://github.com/tvooo/react-clicketyclack.git"
   },
   "author": "Tim von Oldenburg <tim@tvooo.de>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tvooo/vector-clicketyclack/issues"
+    "url": "https://github.com/tvooo/react-clicketyclack/issues"
   },
-  "homepage": "https://github.com/tvooo/vector-clicketyclack#readme",
+  "homepage": "https://github.com/tvooo/react-clicketyclack#readme",
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
@@ -37,8 +38,10 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
+    "gh-pages": "^0.12.0",
     "html-loader": "^0.4.5",
     "markdown-loader": "^2.0.0",
+    "mdscss": "^1.1.0",
     "node-sass": "^4.5.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -51,6 +54,5 @@
   "peerDependencies": {
     "react": "^15.4.2"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

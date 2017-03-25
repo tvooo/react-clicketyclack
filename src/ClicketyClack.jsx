@@ -56,26 +56,30 @@ class ClicketyClack extends Component {
   }
 
   render() {
-    const { lines } = this.props;
+    const { lines, ...rest } = this.props;
     const { lineIndex, characters } = this.state;
     const line = lines[lineIndex].slice(0, characters);
+
+    delete rest.eraseSpeed;
+    delete rest.pause;
+    delete rest.speed;
     return (
-      <span>{ line }</span>
+      <span {...rest}>{ line }</span>
     );
   }
 }
 
 ClicketyClack.propTypes = {
   lines: PropTypes.arrayOf(PropTypes.string).isRequired,
-  speed: PropTypes.number,
   eraseSpeed: PropTypes.number,
   pause: PropTypes.number,
+  speed: PropTypes.number,
 };
 
 ClicketyClack.defaultProps = {
-  speed: 100,
   eraseSpeed: 70,
   pause: 600,
+  speed: 100,
 };
 
 export default ClicketyClack;

@@ -1,4 +1,5 @@
 import React from 'react';
+import 'mdscss/index.scss';
 
 import Preview from './Preview';
 import Block from './Block';
@@ -15,7 +16,7 @@ const App = () => (
     </Block>
     <Block>
       <div
-        className="Markdown"
+        className="mdscss"
         dangerouslySetInnerHTML={{ __html: readme }}
       />
     </Block>

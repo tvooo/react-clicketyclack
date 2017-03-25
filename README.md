@@ -75,7 +75,7 @@ react-clicketyclack was created to emulate the behaviour of [jquery.typer.js](ht
 There are other React components that do similar things:
 
 - [react-typist](https://github.com/jstejada/react-typist)
-- [react-typerwriter](https://github.com/ianbjorndilling/react-typewriter)
+- [react-typewriter](https://github.com/ianbjorndilling/react-typewriter)
 
 ## License
 
