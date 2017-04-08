@@ -38,6 +38,8 @@ var ClicketyClack = function (_Component) {
       characters: 0
     };
 
+    _this.timeout = null;
+
     _this.type = _this.type.bind(_this);
     _this.erase = _this.erase.bind(_this);
     return _this;
@@ -47,6 +49,13 @@ var ClicketyClack = function (_Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.type();
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+      }
     }
   }, {
     key: 'type',
@@ -66,10 +75,10 @@ var ClicketyClack = function (_Component) {
         this.setState({
           characters: line.length
         });
-        setTimeout(this.erase, pause);
+        this.timeout = setTimeout(this.erase, pause);
       } else {
         this.setState({ characters: this.state.characters + noChars });
-        setTimeout(this.type, speed);
+        this.timeout = setTimeout(this.type, speed);
       }
     }
   }, {
@@ -99,10 +108,10 @@ var ClicketyClack = function (_Component) {
             lineIndex: lineIndex + 1
           });
         }
-        setTimeout(this.type, pause);
+        this.timeout = setTimeout(this.type, pause);
       } else {
         this.setState({ characters: characters - noChars });
-        setTimeout(this.erase, eraseSpeed);
+        this.timeout = setTimeout(this.erase, eraseSpeed);
       }
     }
   }, {

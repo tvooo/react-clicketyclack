@@ -11,12 +11,18 @@ class ClicketyClack extends Component {
       characters: 0,
     };
 
+    this.timeout = null;
+
     this.type = this.type.bind(this);
     this.erase = this.erase.bind(this);
   }
 
   componentDidMount() {
     this.type();
+  }
+
+  componentWillUnmount() {
+    if (this.timeout) { clearTimeout(this.timeout); }
   }
 
   type() {
@@ -30,10 +36,10 @@ class ClicketyClack extends Component {
       this.setState({
         characters: line.length,
       });
-      setTimeout(this.erase, pause);
+      this.timeout = setTimeout(this.erase, pause);
     } else {
       this.setState({ characters: this.state.characters + noChars });
-      setTimeout(this.type, speed);
+      this.timeout = setTimeout(this.type, speed);
     }
   }
 
@@ -57,10 +63,10 @@ class ClicketyClack extends Component {
           lineIndex: lineIndex + 1,
         });
       }
-      setTimeout(this.type, pause);
+      this.timeout = setTimeout(this.type, pause);
     } else {
       this.setState({ characters: characters - noChars });
-      setTimeout(this.erase, eraseSpeed);
+      this.timeout = setTimeout(this.erase, eraseSpeed);
     }
   }
 
