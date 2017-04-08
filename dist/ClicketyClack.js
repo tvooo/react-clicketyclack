@@ -20,6 +20,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var containsNonLatinCodepoints = function containsNonLatinCodepoints(s) {
+  return (/[^\u0000-\u00ff]/.test(s)
+  );
+};
+
 var ClicketyClack = function (_Component) {
   _inherits(ClicketyClack, _Component);
 
@@ -48,17 +53,22 @@ var ClicketyClack = function (_Component) {
     value: function type() {
       var _props = this.props,
           pause = _props.pause,
-          speed = _props.speed;
+          speed = _props.speed,
+          lines = _props.lines;
+      var _state = this.state,
+          characters = _state.characters,
+          lineIndex = _state.lineIndex;
 
-      var line = this.props.lines[this.state.lineIndex];
+      var line = lines[lineIndex];
+      var noChars = containsNonLatinCodepoints(line.charAt(characters)) ? 2 : 1;
 
-      if (this.state.characters + 1 === line.length) {
+      if (characters + noChars === line.length) {
         this.setState({
-          characters: this.state.characters + 1
+          characters: line.length
         });
         setTimeout(this.erase, pause);
       } else {
-        this.setState({ characters: this.state.characters + 1 });
+        this.setState({ characters: this.state.characters + noChars });
         setTimeout(this.type, speed);
       }
     }
@@ -67,11 +77,17 @@ var ClicketyClack = function (_Component) {
     value: function erase() {
       var _props2 = this.props,
           pause = _props2.pause,
-          eraseSpeed = _props2.eraseSpeed;
+          eraseSpeed = _props2.eraseSpeed,
+          lines = _props2.lines;
+      var _state2 = this.state,
+          characters = _state2.characters,
+          lineIndex = _state2.lineIndex;
 
-      var isLastLine = this.state.lineIndex === this.props.lines.length - 1;
+      var isLastLine = lineIndex === lines.length - 1;
+      var line = lines[this.state.lineIndex];
+      var noChars = containsNonLatinCodepoints(line.charAt(characters - 1)) ? 2 : 1;
 
-      if (this.state.characters - 1 === 0) {
+      if (characters - noChars === 0) {
         if (isLastLine) {
           this.setState({
             characters: 0,
@@ -80,12 +96,12 @@ var ClicketyClack = function (_Component) {
         } else {
           this.setState({
             characters: 0,
-            lineIndex: this.state.lineIndex + 1
+            lineIndex: lineIndex + 1
           });
         }
         setTimeout(this.type, pause);
       } else {
-        this.setState({ characters: this.state.characters - 1 });
+        this.setState({ characters: characters - noChars });
         setTimeout(this.erase, eraseSpeed);
       }
     }
@@ -96,9 +112,9 @@ var ClicketyClack = function (_Component) {
           lines = _props3.lines,
           rest = _objectWithoutProperties(_props3, ['lines']);
 
-      var _state = this.state,
-          lineIndex = _state.lineIndex,
-          characters = _state.characters;
+      var _state3 = this.state,
+          lineIndex = _state3.lineIndex,
+          characters = _state3.characters;
 
       var line = lines[lineIndex].slice(0, characters);
 
