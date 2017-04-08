@@ -36,6 +36,8 @@ class Preview extends Component {
               'Look at me.',
               'I type stuff.',
               'Then I erase it again.',
+              'I can also do unicode:',
+              '🦄 🎉 😎',
               'And when I\'m all out of stuff to type...',
               'I just start over.',
             ]}

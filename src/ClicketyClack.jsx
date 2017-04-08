@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+const containsNonLatinCodepoints = s => /[^\u0000-\u00ff]/.test(s);
+
 class ClicketyClack extends Component {
   constructor() {
     super();
@@ -18,25 +20,32 @@ class ClicketyClack extends Component {
   }
 
   type() {
-    const { pause, speed } = this.props;
-    const line = this.props.lines[this.state.lineIndex];
+    const { pause, speed, lines } = this.props;
+    const { characters, lineIndex } = this.state;
+    const line = lines[lineIndex];
+    const noChars = containsNonLatinCodepoints(line.charAt(characters))
+      ? 2 : 1;
 
-    if (this.state.characters + 1 === line.length) {
+    if (characters + noChars === line.length) {
       this.setState({
-        characters: this.state.characters + 1,
+        characters: line.length,
       });
       setTimeout(this.erase, pause);
     } else {
-      this.setState({ characters: this.state.characters + 1 });
+      this.setState({ characters: this.state.characters + noChars });
       setTimeout(this.type, speed);
     }
   }
 
   erase() {
-    const { pause, eraseSpeed } = this.props;
-    const isLastLine = this.state.lineIndex === this.props.lines.length - 1;
+    const { pause, eraseSpeed, lines } = this.props;
+    const { characters, lineIndex } = this.state;
+    const isLastLine = lineIndex === lines.length - 1;
+    const line = lines[this.state.lineIndex];
+    const noChars = containsNonLatinCodepoints(line.charAt(characters - 1))
+      ? 2 : 1;
 
-    if (this.state.characters - 1 === 0) {
+    if (characters - noChars === 0) {
       if (isLastLine) {
         this.setState({
           characters: 0,
@@ -45,12 +54,12 @@ class ClicketyClack extends Component {
       } else {
         this.setState({
           characters: 0,
-          lineIndex: this.state.lineIndex + 1,
+          lineIndex: lineIndex + 1,
         });
       }
       setTimeout(this.type, pause);
     } else {
-      this.setState({ characters: this.state.characters - 1 });
+      this.setState({ characters: characters - noChars });
       setTimeout(this.erase, eraseSpeed);
     }
   }

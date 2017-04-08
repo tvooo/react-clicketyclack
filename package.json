@@ -1,6 +1,6 @@
 {
   "name": "react-clicketyclack",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Let me type it out for you",
   "main": "dist/ClicketyClack.js",
   "directories": {
@@ -12,7 +12,7 @@
     "start": "webpack-dev-server",
     "eslint": "eslint --ext .js,.jsx .",
     "test": "npm run eslint",
-    "gh-pages": "gh-pages -d docs"
+    "gh-pages": "npm run build && gh-pages -d docs"
   },
   "repository": {
     "type": "git",

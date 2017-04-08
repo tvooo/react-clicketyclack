@@ -12,6 +12,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -90,15 +92,22 @@ var ClicketyClack = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var lines = this.props.lines;
+      var _props3 = this.props,
+          lines = _props3.lines,
+          rest = _objectWithoutProperties(_props3, ['lines']);
+
       var _state = this.state,
           lineIndex = _state.lineIndex,
           characters = _state.characters;
 
       var line = lines[lineIndex].slice(0, characters);
+
+      delete rest.eraseSpeed;
+      delete rest.pause;
+      delete rest.speed;
       return _react2.default.createElement(
         'span',
-        null,
+        rest,
         line
       );
     }
@@ -109,15 +118,15 @@ var ClicketyClack = function (_Component) {
 
 ClicketyClack.propTypes = {
   lines: _react.PropTypes.arrayOf(_react.PropTypes.string).isRequired,
-  speed: _react.PropTypes.number,
   eraseSpeed: _react.PropTypes.number,
-  pause: _react.PropTypes.number
+  pause: _react.PropTypes.number,
+  speed: _react.PropTypes.number
 };
 
 ClicketyClack.defaultProps = {
-  speed: 100,
   eraseSpeed: 70,
-  pause: 600
+  pause: 600,
+  speed: 100
 };
 
 exports.default = ClicketyClack;
