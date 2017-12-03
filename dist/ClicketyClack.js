@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -142,10 +146,10 @@ var ClicketyClack = function (_Component) {
 }(_react.Component);
 
 ClicketyClack.propTypes = {
-  lines: _react.PropTypes.arrayOf(_react.PropTypes.string).isRequired,
-  eraseSpeed: _react.PropTypes.number,
-  pause: _react.PropTypes.number,
-  speed: _react.PropTypes.number
+  lines: _propTypes2.default.arrayOf(_propTypes2.default.string).isRequired,
+  eraseSpeed: _propTypes2.default.number,
+  pause: _propTypes2.default.number,
+  speed: _propTypes2.default.number
 };
 
 ClicketyClack.defaultProps = {

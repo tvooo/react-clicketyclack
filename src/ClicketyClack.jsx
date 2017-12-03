@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const containsNonLatinCodepoints = s => /[^\u0000-\u00ff]/.test(s);
 
