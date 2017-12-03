@@ -1,6 +1,6 @@
 {
   "name": "react-clicketyclack",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Let me type it out for you",
   "main": "dist/ClicketyClack.js",
   "directories": {
