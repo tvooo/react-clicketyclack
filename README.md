@@ -1,5 +1,7 @@
 # react-clicketyclack
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tvooo/react-clicketyclack.svg)](https://greenkeeper.io/)
+
 > A React component that types out lines of text, one character at a time
 
 [![Build Status](https://travis-ci.org/tvooo/react-clicketyclack.svg?branch=master)](https://travis-ci.org/tvooo/react-clicketyclack)
